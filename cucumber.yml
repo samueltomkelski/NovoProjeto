@@ -1,2 +1,2 @@
-default: BROWSER=chrome
+default: BROWSER=chrome --tags @cadastro
 firefox: BROWSER=firefox

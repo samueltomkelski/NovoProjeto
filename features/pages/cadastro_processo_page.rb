@@ -1,4 +1,4 @@
-class CadastroProcesso < SitePrism::Page
+class CadastroProcessoPage < SitePrism::Page
     set_url "/portal"
 
 
@@ -6,11 +6,12 @@ class CadastroProcesso < SitePrism::Page
     element :link_cadastro_processo, "#itemMenu_64_1_2029"
 
     #inputs
-    element :codigo_classe, "#assuntosIsHierarquicoDescricao"
-    element :marcar_resp, "checkResp"
-    element :interessado, "entity.principalInteressado.nuIdentFormatado"
-    element :detalhamento, "entity.deComplemento"
+    element :codigo_classe, "#assuntosIsHierarquicoSigla"
+    element :descricao_classe, "#assuntosIsHierarquicoDescricao"
+    element :marcar_resp, "#checkResp"
+    element :interessado, "#entity.principalInteressado.nuIdentFormatado"
+    element :detalhamento, "#entity.deComplemento"
 
     #botão
-    element :proximo, "botaoSalvar"
+    element :proximo, "#botaoSalvar"
 end

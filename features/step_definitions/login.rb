@@ -18,3 +18,8 @@ end
 Entao("visualizo meu nome na aplicacao") do
     expect(login_page).to have_text('Usuário administrador da Softplan'.upcase)
 end
+
+
+Dado("que estou logado no sistema") do
+    LoginSupport.new.logar_na_aplicacao(login_page)
+end

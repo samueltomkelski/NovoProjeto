@@ -1,24 +1,33 @@
-cadastro_processo = CadastroProcesso.new
+cadastro_processo = CadastroProcessoPage.new
   
-  Dado("que acessei o menu Cadastro de processo") do
-    sleep(0.1)
-    #cadastro_processo.link_cadastro_processo.click
-    cadastro_processo.find_link(:link_cadastro_processo,"Cadastro de Processo").click
+  Quando("eu acesso o menu Cadastro de processo") do
+    Utils.new.switchFrameMenu(page)
+    cadastro_processo.link_cadastro_processo.click
   end
   
-  Dado("informo o assunto do processo e avanço para a próxima etapa") do
-    cadastro_processo.codigo_classe.set 'Processo de designação de autoridade consular'
+  Quando("informo o assunto do processo e avanço para a próxima etapa") do
+    page.driver.browser.switch_to.frame 'page'
+
+    cadastro_processo.descricao_classe.set 'Processo de designação de autoridade consular'
+    cadastro_processo.codigo_classe.click
+    
+  =begin
+    while !cadastro_processo.codigo_classe.text == ''
+      p cadastro_processo.codigo_classe.text
+    end
+  =end
     cadastro_processo.proximo.click
+    
   end
   
-  Dado("preencho os dados básicos do cadastro") do
+  Quando("preencho os dados básicos do cadastro") do
     cadastro_processo.marcar_resp.click
     cadastro_processo.interessado.set '05114568590'
     cadastro_processo.detalhamento.set 'Automação'
     cadastro_processo.proximo.click
   end
   
-  Dado("concluo o cadastro do Processo") do
+  Quando("concluo o cadastro do Processo") do
     cadastro_processo.proximo.click
   end
   
